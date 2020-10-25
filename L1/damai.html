@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 监听函数 es6的promise async需要了解  钩子函数 异步的含义 
+不知道为啥请求不到数据了
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿大麦网</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .container {
+            margin: 120px auto;
+
+        }
+
+        #show {
+            padding: 20px;
+        }
+
+        li {
+            padding: 20px 0;
+            display: flex;
+        }
+
+        .ulbg {
+            background-color: orange;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container" style="border: 1px solid red;">
+            <div id="city">
+                <ul style="display: flex; cursor:pointer;">
+                    <li>城市</li>
+                    <li v-for="(item,index) in cityList" :class="{ulbg:index===activeIndex}"
+                        @click='activeIndex = index' style="padding: 10px;margin: 10px 20px;">
+                        {{item}}
+                    </li>
+                </ul>
+            </div>
+            <ul id="show">
+                <li v-for="(item, index) in showList">
+                    <img :src="item.verticalPic" style="height: 200px;width: 200px;">
+                    <div>
+                        <div>【{{item.cityname}}】{{item.name}}</div>
+                        <div>{{item.actors}}【{{item.categoryname}}】</div>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        let vm = new Vue({
+            el: '#app',
+            watch: {
+
+            },
+            computed: {
+
+            },
+            created() {
+                this.getShowList();
+            },
+
+            data() {
+                return {
+                    url: 'https://search.damai.cn/searchajax.html?keyword=&cty=&ctl=%E6%BC%94%E5%94%B1%E4%BC%9A&sctl=&tsg=0&st=&et=&order=1&pageSize=30&currPage=1&tn=',
+                    activeIndex: 0,
+                    showList: [],
+                    cityList: ['南京', '上海', '苏州', '北京']
+                }
+            },
+
+            methods: {
+                getShowList() {
+                    axios.get(this.url).then(res => {
+                        console.log(res)
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

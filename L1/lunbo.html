@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .demo li {
+            width: 150px;
+            height: 100px;
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul class="demo">
+            <li v-for="(item,index) in imgList" :key="index" :style="{background:item}" v-show="index===activeIndex">
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                activeIndex: 0,
+                imgList: ['black', 'red', 'blue', 'green', 'yellow']
+            }
+        },
+        methods: {
+
+        },
+        mounted() {
+            // 一些渲染页面的东西要放在钩子函数里，不能写在一些定义内
+            setInterval(() => {
+                this.activeIndex++
+                if (this.activeIndex === importScripts.length) {
+                    this.activeIndex = 0
+                }
+            }, 1000);
+        },
+
+
+    })
+
+
+</script>
+
+</html>

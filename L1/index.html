@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue结构及基本指令、生命周期</title>
+</head>
+
+<body>
+    <div id="app">
+        <p v-cloak>{{name}}</p>
+        <input type="text" v-model="name">
+        <p v-if="isShow">namename</p>
+        <p v-show="isShow">namename</p>
+        <ul>
+            <li v-for="(item,index) in arr" :key="index">
+                <img :src="img" width="100px" height="150px">
+                {{item.name}}---{{item.age}}
+                <button @click="del(index)">删除</button>
+            </li>
+        </ul>
+
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    let vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                img: 'https://tse2-mm.cn.bing.net/th/id/OIP.FMTw24zsWYrbbi4okmkmCgHaHa?w=184&h=184&c=7&o=5&dpr=2&pid=1.7',
+                arr: [{
+                    name: 'ga',
+                    age: 24
+                }, {
+                    name: 'aa',
+                    age: 24
+                }],
+                name: "ga",
+                isShow: false
+            }
+        },
+        methods: {
+            del(index) {
+                this.arr.splice(index, 1)
+            }
+        },
+        beforeCreate() {
+            console.log(this.$el, this.$data)
+        },
+        created() {
+            console.log(this.$el, this.$data)
+        },
+        beforeMount() {
+            console.log(this.$el, this.$data)
+        },
+        mounted() {
+            console.log(this.$el, this.$data)
+        },
+        beforeUpdate() {
+            console.log(this.$el, this.$data)
+        },
+        updated() {
+            console.log(this.$el, this.$data)
+
+        },
+        beforeDestroy() {
+            console.log(this.$el, this.$data)
+        },
+        destroyed() {
+            console.log(this.$el, this.$data)
+        }
+    })
+
+</script>
+
+</html>
