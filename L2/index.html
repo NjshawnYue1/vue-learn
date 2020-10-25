@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        .list {
+            display: flex;
+            padding: 10px 0;
+            align-items: center;
+            border: 1px burlywood solid;
+        }
+
+        .list li {
+            flex: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div style="width: 1000px;margin: 100px auto; ">
+            <ul class="list">
+                <li>商品</li>
+                <li>单价</li>
+                <li>数量</li>
+                <li>金额</li>
+                <li>操作</li>
+
+            </ul>
+
+            <ul class="list" style="margin-top: 20px;">
+                <li>
+                    <img src=" https://static.21cake.com/public/images/f6/41/ae/1512467ebe69c8fde7dbdf13781c207c.jpg"
+                        style="width: 100px;height: 100px;">
+                    <div>
+                        Framboise Cake 蔓生
+                    </div>
+                </li>
+                <li>280</li>
+                <li>
+                    <button>-</button>
+                    <input style="width: 30px;">
+                    <button>+</button>
+                </li>
+                <li>280</li>
+                <li>
+                    <a style="width: 100px;padding: 10px 20px;border: 1px solid burlywood;">
+                        删除
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                goodList: [{
+
+                }]
+            }
+        },
+        methods: {
+
+        },
+    })
+</script>
+
+</html>
