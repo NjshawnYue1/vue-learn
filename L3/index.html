@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <my-red refs="aa">guan</my-red>
+        <my-red size='40px' refs="bb">aaaa</my-red>
+
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./components/myred.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        mounted() {
+            // 获取子组件 但不能保证顺序
+            // 可以为每一个组件设置refs属性 然后可以根据这个属性找到具体的某一个组件
+            console.log(this.$chilred)
+        },
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+
+        },
+    })
+</script>
+
+</html>
